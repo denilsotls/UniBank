@@ -1,4 +1,4 @@
-import { createUser, getAll } from "../repositorys/user.repository";
+import { createUser, getAll, deliteUser } from "../repositorys/user.repository";
 
 export const create = async (req, res) => {
     try{
@@ -18,3 +18,12 @@ export const get = async (req,res)=>{
         res.status(400).send(e);
     }
 }
+
+export const remove = async (req, res) => {
+    try{
+        await deliteUser(Number(req.params.id));
+        res.status(200).send();
+    }catch(e){
+        res.status(400).send(e);
+    }
+};
